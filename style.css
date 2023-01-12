@@ -1,0 +1,49 @@
+body {
+  background-color: #f9f7fe;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  color: #b0b7c1;
+  font-size: 24px;
+  font: weight 100px;
+  line-height: 35px;
+  text-align: left;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 30px auto;
+  border: 1px solid #e4e7ec;
+}
+
+.WeatherInfo {
+  margin-bottom: 20px;
+}
+
+#icon {
+  max-width: 25%;
+}
+
+.numTemp {
+  font-size: 36px;
+}
+
+.weather-temperature img {
+  margin: 7px;
+}
+
+.weather-link {
+  text-decoration: none;
+}
