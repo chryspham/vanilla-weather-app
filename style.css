@@ -17,6 +17,7 @@ ul {
 
 li {
   list-style: none;
+  text-transform: capitalize;
 }
 
 .container {
@@ -36,7 +37,7 @@ li {
   max-width: 25%;
 }
 
-.numTemp {
+#numTemp {
   font-size: 36px;
 }
 
