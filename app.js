@@ -31,7 +31,7 @@ function getTemperature(response) {
   cityElement.innerHTML = response.data.main.name;
 
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.weather[0].main;
+  descriptionElement.innerHTML = response.data.weather[0].description;
 
   let displayTime = document.querySelector("#displayTime");
   displayTime.innerHTML = getTime(response.data.dt * 1000);
@@ -47,9 +47,12 @@ function getTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = "5ef4de8cd6b7fefcd7c42f98cf464ce8";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Los Angeles&appid=${apiKey}&units=metric`;
+let cityName = "Sydney";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(getTemperature);
