@@ -16,9 +16,25 @@
   </head>
   <body>
     <div class="container">
-      <form>
-        <input type="search" placeholder="Enter a city.." id="search" />
-        <input type="submit" placeholder="submit" id="submit-button" />
+      <form id="search-form" class="mb-3">
+        <div class="row">
+          <div class="col-9">
+            <input
+              type="search"
+              placeholder="Enter a city.."
+              id="search-bar"
+              class="form-control"
+            />
+          </div>
+          <div class="col-3">
+            <input
+              type="submit"
+              value="Search"
+              id="submit-button"
+              class="button"
+            />
+          </div>
+        </div>
       </form>
       <div class="WeatherInfo">
         <h1 id="cityName">Los Angeles</h1>

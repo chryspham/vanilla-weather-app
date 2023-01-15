@@ -48,3 +48,12 @@ li {
 .weather-link {
   text-decoration: none;
 }
+
+.button {
+  background-color: #c9acef;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 100px;
+  padding: 7px;
+}
