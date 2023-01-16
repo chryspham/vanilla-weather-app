@@ -25,7 +25,8 @@ function getTime(timestamp) {
 function getTemperature(response) {
   console.log(response.data);
   let tempElement = document.querySelector("#numTemp");
-  tempElement.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
+  tempElement.innerHTML = celsiusTemperature;
 
   let cityElement = document.querySelectorAll("#cityName");
   cityElement.innerHTML = response.data.main.name;
@@ -71,10 +72,22 @@ form.addEventListener("submit", citySearch);
 
 function showFahrenheitTemp(event) {
   event.preventDefault();
-  let fahrenheitTemperature = Math.round((13 * 9) / 5 + 32);
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   let temperatureNumber = document.querySelector("#numTemp");
   temperatureNumber.innerHTML = fahrenheitTemperature;
 }
 
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#numTemp");
+  tempElement.innerHTML = celsiusTemperature;
+}
+
 let getFahrenheit = document.querySelector("#fahrenheit-link");
 getFahrenheit.addEventListener("click", showFahrenheitTemp);
+
+let getCelsius = document.querySelector("#celsius-link");
+getCelsius.addEventListener("click", showCelsiusTemp);
+
+let celsiusTemperature = null;
+search("Los Angeles");
