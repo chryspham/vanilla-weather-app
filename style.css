@@ -57,3 +57,7 @@ li {
   width: 100px;
   padding: 7px;
 }
+.active {
+  cursor: default;
+  color: black;
+}

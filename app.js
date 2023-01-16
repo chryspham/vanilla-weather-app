@@ -73,12 +73,16 @@ form.addEventListener("submit", citySearch);
 function showFahrenheitTemp(event) {
   event.preventDefault();
   let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  getCelsius.classList.remove("active");
+  getFahrenheit.classList.add("active");
   let temperatureNumber = document.querySelector("#numTemp");
   temperatureNumber.innerHTML = fahrenheitTemperature;
 }
 
 function showCelsiusTemp(event) {
   event.preventDefault();
+  getCelsius.classList.add("active");
+  getFahrenheit.classList.remove("active");
   let tempElement = document.querySelector("#numTemp");
   tempElement.innerHTML = celsiusTemperature;
 }
