@@ -68,3 +68,13 @@ function citySearch(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", citySearch);
+
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((13 * 9) / 5 + 32);
+  let temperatureNumber = document.querySelector("#numTemp");
+  temperatureNumber.innerHTML = fahrenheitTemperature;
+}
+
+let getFahrenheit = document.querySelector("#fahrenheit-link");
+getFahrenheit.addEventListener("click", showFahrenheitTemp);
