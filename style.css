@@ -20,6 +20,9 @@ li {
   text-transform: capitalize;
 }
 
+.app-container {
+}
+
 .container {
   background: white;
   border-radius: 16px;
@@ -60,4 +63,10 @@ li {
 .active {
   cursor: default;
   color: black;
+}
+
+.mylink {
+  max-width: 600px;
+  margin: 30px auto;
+  font-size: small;
 }
