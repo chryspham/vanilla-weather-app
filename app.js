@@ -39,7 +39,6 @@ function displayForecast() {
               <span class="temp-high">16°</span>
               <span class="temp-low">6°</span>
             </div>
-          </div>
         </div>`;
   });
   forecastHTML = forecastHTML + `</div>`;
