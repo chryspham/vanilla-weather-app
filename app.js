@@ -22,6 +22,30 @@ function getTime(timestamp) {
   return `${day} ${hour}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Fri", "Sat", "Sun"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `   
+    <div class="col-2">
+            <div class="weather-forecast-day">${day}</div>
+            <img src="http://openweathermap.org/img/wn/01n.png" width="45" />
+            <div class="weather-forecast-temp">
+              <span class="temp-high">16°</span>
+              <span class="temp-low">6°</span>
+            </div>
+          </div>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function getTemperature(response) {
   console.log(response.data);
   let tempElement = document.querySelector("#numTemp");
@@ -94,4 +118,6 @@ let getCelsius = document.querySelector("#celsius-link");
 getCelsius.addEventListener("click", showCelsiusTemp);
 
 let celsiusTemperature = null;
+
 search("Los Angeles");
+displayForecast();
