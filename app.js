@@ -22,25 +22,38 @@ function getTime(timestamp) {
   return `${day} ${hour}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Fri", "Sat", "Sun"];
-
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `   
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `   
     <div class="col-2">
-            <div class="weather-forecast-day">${day}</div>
-            <img src="http://openweathermap.org/img/wn/01n.png" width="45" />
+            <div class="weather-forecast-day">${formatDay(forecastDay.dt)}</div>
+            <img src="http://openweathermap.org/img/wn/${
+              forecastDay.weather[0].icon
+            }@2x.png" width="45" />
             <div class="weather-forecast-temp">
-              <span class="temp-high">16°</span>
-              <span class="temp-low">6°</span>
+              <span class="temp-high">${Math.round(
+                forecastDay.temp.max
+              )}°</span>
+              <span class="temp-low">${Math.round(forecastDay.temp.min)}°</span>
             </div>
         </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -48,7 +61,7 @@ function displayForecast(response) {
 
 function receiveForecast(coordinates) {
   let apiKey = "5ef4de8cd6b7fefcd7c42f98cf464ce8";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -127,4 +140,4 @@ getCelsius.addEventListener("click", showCelsiusTemp);
 
 let celsiusTemperature = null;
 
-search("Los Angeles");
+search("Sydney");
