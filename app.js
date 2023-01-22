@@ -22,7 +22,8 @@ function getTime(timestamp) {
   return `${day} ${hour}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -43,6 +44,12 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function receiveForecast(coordinates) {
+  let apiKey = "5ef4de8cd6b7fefcd7c42f98cf464ce8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function getTemperature(response) {
@@ -73,6 +80,8 @@ function getTemperature(response) {
   );
 
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  receiveForecast(response.data.coord);
 
   let h1 = document.querySelector("#cityName");
   h1.innerHTML = response.data.name;
@@ -119,4 +128,3 @@ getCelsius.addEventListener("click", showCelsiusTemp);
 let celsiusTemperature = null;
 
 search("Los Angeles");
-displayForecast();
